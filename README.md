@@ -39,8 +39,6 @@ These calendar would be used by the admin to determine how to assign shifts, whi
 
 See also: 
 * <https://www.aurigait.com/blog/accessing-google-calendar-data-using-google-calendar-api/>
-* <https://www.cdata.com/kb/tech/googlecalendar-jdbc-spring-boot.rst>
-* <https://developers.google.com/calendar/api/quickstart/java>
 * <https://stackoverflow.com/questions/42769550/google-calendar-api-within-spring-boot>
 * <https://github.com/a2cart/google-calendar-api>
 * <https://bhavsac.medium.com/google-calendar-java-api-integration-part-1-d1c89d083986>
