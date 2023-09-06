@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156/spike-google-cal
 owner: ucsb-cs156
 repo_name: spike-google-cal
-pull_requests: [{"author":{"id":"MDQ6VXNlcjExMTkwMTc=","is_bot":false,"login":"pconrad","name":"Phill Conrad"},"headRefName":"pc-spike-01","number":1,"title":"pc - first attempt at getting google cal info","url":"https://github.com/ucsb-cs156/spike-google-cal/pull/1"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjExMTkwMTc=","is_bot":false,"login":"pconrad","name":"Phill Conrad"},"headRefName":"pc-try-service-account","number":2,"title":"Pc try service account","url":"https://github.com/ucsb-cs156/spike-google-cal/pull/2"},{"author":{"id":"MDQ6VXNlcjExMTkwMTc=","is_bot":false,"login":"pconrad","name":"Phill Conrad"},"headRefName":"pc-spike-01","number":1,"title":"pc - first attempt at getting google cal info","url":"https://github.com/ucsb-cs156/spike-google-cal/pull/1"}]
