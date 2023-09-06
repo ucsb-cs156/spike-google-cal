@@ -1,78 +1,57 @@
-# STARTER-team03
+# spike-google-cal
 
-Instructions: <https://ucsb-cs156.github.io/m23/lab/team03.html>
+This is a spike, i.e. a proof of concept that is not intended to be production code, to test integration of the STARTER-team03 code from
+m23 with the API for Google Calendar.
 
-TODO: change heading above to your repo name, e.g. `# team03-m23-9am-4`
 
-TODO: Add a link to the deployed Dokku app for your team here, e.g.
+In particular, we want to test whether we can configure one or more private google calendars (private within Google Calendar), but allow the app access to these so that it can retrieve information (read only) and display that information to authorized users.
 
-Deployments:
+So for this initial spike, we only need the API for reading calendar events (not creating them, at least not yet).  And the focus is on access to a private google calendar that the app is then authorized to access (but also access when the user owning the calendar is offline, meaning that we may need to (a) store access tokens, and/or (b) cache the calendar information).
 
-* Prod: <https://team03.dokku-17.cs.ucsb.edu>
-* QA: <https://team03-qa.dokku-17.cs.ucsb.edu>
+The purpose of this spike is to determine the feasibility of using
+Google Calendar as the place to store and visualize
+* Driver Shift Availability
+* Driver Shift Assignment
+* Ride Requests
 
-TODO: Fill in this table with correct information.  Don't delete rows that
-aren't being completed (due to having only 4 or 5 team members); instead
-put `(no one)` under name and leave Github Id blank.
+The idea is this:
 
-| Table                     | Name         | Github Id |
-|---------------------------|--------------|-----------|
-| UCSBDiningCommonsMenuItem |              |           |
-| UCSBOrganization          |              |           |
-| RecommendationRequest     |              |           |
-| MenuItemReview            |              |           |
-| HelpRequest               |              |           |
-| Articles                  |              |           |
+## Driver Shifts:
 
-Remember though, that in spite of these initial  assignments, it is still
-a team project.  Please help other team members to finish their work
-after completing your own.
+* A central Google Calendar would be established for Admins to assign driver shifts.  
+* Admins could do CRUD operations on that calendar directly in Google Calendar (meaning there is no need to have Create, Update, Delete operations directly in the app.) 
+* Admins will annotate the Calendar entries with titles with a special limited syntax that would indicate the driver id, and where applicable, the backup driver id for each shift.
+* The app would be able to retrieve data from this Google Calendar and display the shift table for a given week along with the driver information (name, email address), or in cases where the google calendar entry is misformed, an error message.
+
+This allows admins to set up shifts that repeat, as well as setting up one-time exceptions, etc. all with the feature that Google Calendar provides.
+
+The calendar could still be a private calendar and it would not be necessary for anyone to have access to the calendar except the Admin.  The read access to the calendar would be provided through the app.
+
+The app only needs read access to this private calendar.
+
+## Driver Availability
+
+In the next phase, drivers would each create their own private google calendar that they would authorize the app to have read access to.
+
+These calendar would be used by the admin to determine how to assign shifts, which at least initially, would still be assigned through the actual Google Calendar interface.
+
+# Resources
+
+See also: 
+* <https://www.aurigait.com/blog/accessing-google-calendar-data-using-google-calendar-api/>
+* <https://www.cdata.com/kb/tech/googlecalendar-jdbc-spring-boot.rst>
+* <https://developers.google.com/calendar/api/quickstart/java>
+* <https://stackoverflow.com/questions/42769550/google-calendar-api-within-spring-boot>
+* <https://github.com/a2cart/google-calendar-api>
+* <https://bhavsac.medium.com/google-calendar-java-api-integration-part-1-d1c89d083986>
+* <https://blog.auryn.dev/posts/google-auth-java/>
+* <https://www.youtube.com/watch?v=gMInK9daNUs>
+
 
 # Versions
 * Java: 17
 * node: 16.20.0
 See [docs/versions.md](docs/versions.md) for more information on upgrading versions.
-
-# Brief overview of starter code 
-
-TODO: remove this header and content of this section before submitting.
-However leave the section `# Overview of application` and its content 
-intact.
-
-The starter code here starts with a base similar to `team02`, but with 
-some extra frontend code on top of the of backend CRUD operations
-that were present in `team02`.
-
-You can use this code as a basis to:
-* Add the backend code from team02 *in stages* as suggested in the issues (doing that in "one giant pull request" is *not recommended) 
-* Add a frontend on top of the backend CRUD features you added in team02, using the existing
-  code as examples.
-
-# Overview of application
-
-When complete, this application will have the following features:
-
-* For users that are not logged in, no new features are available.
-* For users that are logged in, they will see a new menu dropdown called Tables,
-  and under it will be menu items for each of the tables that was implemented in the 
-  application (e.g. some subset of `UCSBDiningCommonsMenuItem`, `UCSBOrganization` `RecommendationRequest`,`MenuItemReview`,`HelpRequest`, and `Articles`).
-* For users that are logged in, but are not admins, each of these menu items takes them to
-  an "index" page for that database table, where they see a list of all of the database
-  records for that table in table form.  The index page, in this case, will not have a button
-  to create database records, and it will not have buttons for Edit and Delete; only Show.
-* The Show button will take the user to a page where they see only one record from the database
-  table.
-* For users that are logged in as admins, they will also see a button on the index page that
-  takes them to a page where they can create a new record in the database.  That page, when the
-  user successfully creates a record, or cancels creating a record, 
-  should navigate back to the index page.
-* For users that are logged in as admins, in addition to the Show button, 
-  they will also see a button on the index page that
-  beside each row for Edit, and Delete.
-* The Edit button, for admins, will navigate to a page where the database record can be edited.
-  After a successful edit, the page will navigate back to the index page.
-* The Delete button, for admins, will make the api call to delete the row, and then 
-  navigate back to the index page.
 
 
 # Setup before running application
